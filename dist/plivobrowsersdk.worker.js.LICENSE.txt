@@ -60,3 +60,9 @@
  *     POSSIBILITY OF SUCH DAMAGE.
  * 
  */
+
+/*! no static exports found */
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/awesome-typescript-loader/dist/entry.js!./lib/networkCheckTimer.worker.ts ***!
+  \************************************************************************************************/
