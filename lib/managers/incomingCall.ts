@@ -184,18 +184,26 @@ const onProgress = (incomingCall: CallSession) => (): void => {
       callInfo.reason = 'redirected';
     }
     Plivo.log.debug(`${LOGCAT.CALL} | Emitting onIncomingCall`);
-    if (getCurrentIncomingCall(incomingCall.callUUID ?? "", cs)) {
-      isIncomingCallRinging = true;
-      cs.emit(
-        'onIncomingCall',
-        callerId,
-        incomingCall.extraHeaders,
-        incomingCall.getCallInfo("local"),
-        callerName,
-      );
-    } else {
-      Plivo.log.error(`${LOGCAT.CALL} |Cannot emit onIncomingCall for callUUID: ${incomingCall.callUUID}. Incoming call does not exists`);
-    }
+    //TODO: MultiTabCallAcceptError: Making this change to support the different tab call accept error, revert if not useful
+    // if (getCurrentIncomingCall(incomingCall.callUUID ?? "", cs)) {
+    //   isIncomingCallRinging = true;
+    //   cs.emit(
+    //     'onIncomingCall',
+    //     callerId,
+    //     incomingCall.extraHeaders,
+    //     incomingCall.getCallInfo("local"),
+    //     callerName,
+    //   );
+    // } else {
+    //   Plivo.log.error(`${LOGCAT.CALL} |Cannot emit onIncomingCall for callUUID: ${incomingCall.callUUID}. Incoming call does not exists`);
+    // }
+    cs.emit(
+      'onIncomingCall',
+      callerId,
+      incomingCall.extraHeaders,
+      callInfo,
+      callerName,
+    );
   };
 
   cs.noiseSuppresion.setLocalMediaStream().then(() => {
