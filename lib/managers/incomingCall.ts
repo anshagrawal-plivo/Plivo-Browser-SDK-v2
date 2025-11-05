@@ -180,7 +180,9 @@ const onProgress = (incomingCall: CallSession) => (): void => {
   const emitIncomingCall = () => {
     const callInfo = incomingCall.getCallInfo('local');
     if (inviteURI === cs.userName) {
-      Plivo.log.debug(`${LOGCAT.CALL} | setting callInfo reason to redirected since inviteURI: ${inviteURI}`);
+      Plivo.log.debug(
+        `${LOGCAT.CALL} | setting callInfo reason to redirected since inviteURI: ${inviteURI}`,
+      );
       callInfo.reason = 'redirected';
     }
     Plivo.log.debug(`${LOGCAT.CALL} | Emitting onIncomingCall`);
